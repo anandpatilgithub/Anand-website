@@ -247,7 +247,7 @@
             </div>
           </div>
           <!--  -->
-          <div class="work">
+          <div class="work" id="fushi">
             <img src="./image/fushi.png" alt="" />
             <div class="layer">
               <h3>FUSHIWELLBEING</h3>
@@ -260,7 +260,7 @@
             </div>
           </div>
         </div>
-        <a href="#" class="btn">See More</a>
+        <a href="#" class="btn" id="see_more">See More</a>
       </div>
     </div>
     <!-- -----------------#################### contact ##############---------------- -->
@@ -329,6 +329,11 @@
       </div>
     </div>
     <script>
+      $(document).ready(function(){
+        $('#see_more').click(function(){
+          $('#fushi').show();
+        });
+      });
       var tablinks = document.getElementsByClassName("tab-links");
       var tabcontents = document.getElementsByClassName("tab-contents");
       function opentab(tabname) {
