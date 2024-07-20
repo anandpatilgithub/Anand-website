@@ -331,7 +331,17 @@
     <script>
       $(document).ready(function(){
         $('#see_more').click(function(){
-          $('#fushi').show();
+          $('#fushi').show(function(){
+         if($('#fushi').html() == "See More" )
+       {
+        $('#fishi').html('less than');
+       }
+       else{
+        $('#fishi').html('See More');
+       }
+          // $('#fushi').show(function(){
+
+          });
         });
       });
       var tablinks = document.getElementsByClassName("tab-links");
