@@ -331,13 +331,13 @@
     <script>
       $(document).ready(function(){
         $('#see_more').click(function(){
-          $('#fushi').show(function(){
-         if($('#fushi').html() == "See More" )
+          $('#fushi').toggle(function(){
+         if($('#see_more').html() == "See More" )
        {
-        $('#fishi').html('less than');
+        $('#see_more').html('less');
        }
        else{
-        $('#fishi').html('See More');
+        $('#see_more').html('See More');
        }
           // $('#fushi').show(function(){
 
