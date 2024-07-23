@@ -305,7 +305,7 @@
             >
           </div>
           <div class="contact-right">
-            <form action="https://api.web3forms.com/submit" method="POST">
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
               <!-- <input type="hidden" name="9b04f612-1030-4e77-9678-e3b5719faa66" value="YOUR_ACCESS_KEY_HERE"> -->
               <input type="hidden" name="access_key" value="9b04f612-1030-4e77-9678-e3b5719faa66">
             <!-- <form name="submit-to-google-sheet" > -->
@@ -331,6 +331,25 @@
         <p>Copyright @ Anand..<i class="fa-solid fa-heart"></i></p>
       </div>
     </div>
+    <script>
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+  
+        // Get form data
+        const name = document.querySelector('input[name="Name"]').value;
+        const email = document.querySelector('input[name="Email"]').value;
+        const message = document.querySelector('textarea[name="Message"]').value;
+  
+        // Create the WhatsApp message
+        const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+  
+        // WhatsApp API URL
+        const whatsappURL = `https://api.whatsapp.com/send?phone=8552030385&text=${whatsappMessage}`;
+  
+        // Open WhatsApp
+        window.open(whatsappURL, '_blank');
+      });
+    </script>
     <script>
       $(document).ready(function(){
         $('#see_more').click(function(){
