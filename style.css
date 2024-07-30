@@ -66,9 +66,9 @@ nav ul li{
 }
 nav ul li a:hover{
     /* background: #c41515; */
-    color: #fff;
+    /* color: #fff;
     border-radius: 5px;
-    box-shadow: 2px 2px 2px 2px rgb(228, 226, 226);
+    box-shadow: 2px 2px 2px 2px rgb(228, 226, 226); */
 }
 nav ul li a{
     color: #fffcfc;
