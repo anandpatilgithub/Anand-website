@@ -51,7 +51,7 @@
 /* ── Base Reset ───────────────────────────────────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-html { scroll-behavior:smooth; background:var(--bg-root); }
+html { scroll-behavior:smooth; background:var(--bg-root); overflow-x:hidden; }
 
 body {
   font-family:'Inter', sans-serif;
@@ -1156,6 +1156,7 @@ h1,h2,h3,h4,h5,h6 {
   .nav-menu { display:none; }
   .mobile-toggle { display:block; }
   .footer-grid { grid-template-columns:1fr 1fr; }
+  .hero-glow-bg { width:100%; max-width:100vw; left:0; transform:none; }
 }
 
 @media (max-width:640px) {
@@ -1164,4 +1165,19 @@ h1,h2,h3,h4,h5,h6 {
   .projects-grid-layout { grid-template-columns:1fr; }
   .footer-grid { grid-template-columns:1fr; }
   .about-highlights { grid-template-columns:1fr; }
+  .hero-section { padding-top:100px; padding-bottom:60px; }
+  .container { padding:0 16px; }
+  .hero-glow-bg { width:100%; max-width:100vw; left:0; transform:none; height:300px; }
+  .expertise-section::before,
+  .contact-section::before,
+  .portfolio-section::before,
+  .experience-section::before { display:none; }
+  .case-studies-grid { grid-template-columns:1fr; }
+  .hero-actions { flex-direction:column; align-items:flex-start; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary { width:100%; justify-content:center; }
+  .contact-form { padding:24px 16px; }
+  .modal-content-card { padding:24px 16px; }
+  .services-grid { grid-template-columns:1fr; }
+  .expertise-grid { grid-template-columns:1fr; }
 }
