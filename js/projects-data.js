@@ -887,6 +887,34 @@ const projectsData = [
     workDone: ["Product Page Development", "Image Zoom Customization", "Inquiry Modal", "Responsive Layout"],
     featured: false,
     img: ""
+  },
+  {
+    id: "ikkatdoor",
+    name: "Ikkatdoor",
+    url: "http://ikkatdoor.com/",
+    domain: "ikkatdoor.com",
+    category: "fashion",
+    platform: "Shopify",
+    market: "India",
+    technology: ["Shopify", "Liquid", "Custom Sections"],
+    description: "Traditional Ikkat and handloom apparel store built on Shopify with ethnic design elements.",
+    workDone: ["Theme Customization", "Mobile Optimization", "Speed Tuning"],
+    featured: false,
+    img: ""
+  },
+  {
+    id: "whimsy-and-you",
+    name: "Whimsy And You",
+    url: "https://whimsyandyou.com/",
+    domain: "whimsyandyou.com",
+    category: "fashion",
+    platform: "Shopify",
+    market: "India",
+    technology: ["Shopify", "Liquid", "AJAX Cart", "Custom Sections"],
+    description: "Contemporary women's fashion and lifestyle store with aesthetic product layouts and custom collections.",
+    workDone: ["UI Polish", "Collection Setup", "Cart Customization"],
+    featured: false,
+    img: ""
   }
 ];
 
