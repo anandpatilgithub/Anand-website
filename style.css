@@ -8,11 +8,11 @@
 /* ── Root Tokens ──────────────────────────────────────────────────────────── */
 :root {
   /* Backgrounds */
-  --bg-root:          #06060a;
-  --bg-surface:       #0d0d14;
-  --bg-card:          #111119;
-  --bg-card-hover:    #17171f;
-  --bg-elevated:      #1c1c27;
+  --bg-root:          #050505;
+  --bg-surface:       #0a0a0a;
+  --bg-card:          #121212;
+  --bg-card-hover:    #1a1a1a;
+  --bg-elevated:      #222222;
 
   /* Borders */
   --border-dim:       rgba(255,255,255,.06);
@@ -450,7 +450,7 @@ h1,h2,h3,h4,h5,h6 {
   display:flex;
   gap:20px;
   width:max-content;
-  animation:marqueeScroll 80s linear infinite;
+  animation:marqueeScroll 160s linear infinite;
 }
 .marquee-track:hover { animation-play-state:paused; }
 @keyframes marqueeScroll {
@@ -461,12 +461,12 @@ h1,h2,h3,h4,h5,h6 {
 .marquee-pill {
   display:inline-flex;
   align-items:center;
-  gap:9px;
+  gap:12px;
   background:rgba(255,255,255,.03);
   border:1px solid var(--border-dim);
-  padding:9px 18px;
+  padding:12px 24px;
   border-radius:var(--radius-full);
-  font-size:13px;
+  font-size:18px;
   font-weight:600;
   color:var(--text-muted);
   white-space:nowrap;
@@ -479,9 +479,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 .marquee-pill i { color:var(--g1); }
 .marquee-brand-logo {
-  width: 18px;
-  height: 18px;
-  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
   object-fit: contain;
   flex-shrink: 0;
 }

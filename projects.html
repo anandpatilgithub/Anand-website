@@ -56,6 +56,7 @@
         <div class="filter-pills-flex" id="pillsContainer">
           <button class="filter-pill active" onclick="setFullFilter('all', this)">All Projects (60)</button>
           <button class="filter-pill" onclick="setFullFilter('fashion', this)">Fashion & Apparel</button>
+          <button class="filter-pill" onclick="setFullFilter('jewellery', this)">Jewellery</button>
           <button class="filter-pill" onclick="setFullFilter('beauty', this)">Beauty & Skincare</button>
           <button class="filter-pill" onclick="setFullFilter('food', this)">Food & Organics</button>
           <button class="filter-pill" onclick="setFullFilter('home', this)">Home & Living</button>
@@ -126,12 +127,38 @@
 
         let html = '';
         filtered.forEach(p => {
-          let initialImgSrc = p.img;
-          if (!initialImgSrc) {
-            initialImgSrc = `https://s.wordpress.com/mshots/v1/${encodeURIComponent(p.url)}?w=800&h=500`;
-          }
-
           const techBadges = p.technology.map(t => `<span class="tech-tag-item">${t}</span>`).join('');
+
+          let imgContent = '';
+
+          if (p.img) {
+            imgContent = `
+              <div class="brand-fallback-view loading-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #09090b; z-index: 1;">
+                <i class="fa-brands fa-shopify pulse" style="font-size: 48px; color: #95bf47; margin-bottom: 16px;"></i>
+                <div style="font-size: 13px; color: var(--text-muted);">Loading Preview...</div>
+              </div>
+              <img 
+                src="${p.img}" 
+                alt="${p.name}" 
+                class="project-img" 
+                loading="lazy" 
+                style="position: relative; z-index: 2; opacity: 0; transition: opacity 0.4s ease;"
+                onload="this.style.opacity='1'; this.previousElementSibling.style.opacity='0'; setTimeout(() => this.previousElementSibling.style.display='none', 400);" 
+                onerror="handleImgError(this, '${p.url}', '${p.domain}', '${p.name.replace(/'/g, "\\'")}')"
+              />
+            `;
+          } else {
+            imgContent = `
+              <div class="brand-fallback-view" style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #09090b; padding: 20px; text-align: center;">
+                <i class="fa-brands fa-shopify" style="font-size: 48px; color: #95bf47; margin-bottom: 16px;"></i>
+                <div class="brand-fallback-name" style="font-size: 16px; font-weight: 600; color: #fff;">${p.name}</div>
+                <div class="brand-fallback-domain" style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">${p.domain}</div>
+                <div style="margin-top: 12px; font-size: 12px; color: var(--text-subtle); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                  <i class="fa-solid fa-image"></i> Shopify Store Preview
+                </div>
+              </div>
+            `;
+          }
 
           html += `
             <div class="project-browser-card">
@@ -146,14 +173,8 @@
                 </div>
               </div>
 
-              <div class="project-img-wrapper">
-                <img 
-                  src="${initialImgSrc}" 
-                  alt="${p.name} Homepage Preview" 
-                  loading="lazy"
-                  data-step="0"
-                  onerror="handleImgError(this, '${p.url}', '${p.domain}', '${p.name.replace(/'/g, "\\'")}')"
-                />
+              <div class="project-img-wrapper" style="position: relative; overflow: hidden; height: 215px;">
+                ${imgContent}
               </div>
 
               <div class="project-card-body">
