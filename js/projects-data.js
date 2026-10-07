@@ -1165,6 +1165,34 @@ const projectsData = [
     workDone: ["Speed Tuning", "Mobile Responsive"],
     featured: false,
     img: ""
+  },
+  {
+    id: "raasil",
+    name: "Raasil",
+    url: "https://www.raasil.in/",
+    domain: "raasil.in",
+    category: "fashion",
+    platform: "Shopify",
+    market: "India",
+    technology: ["Shopify", "Liquid", "Custom Sections", "CSS3"],
+    description: "Contemporary ethnic and fusion wear brand store on Shopify with elegant collection layouts, festive category pages, and mobile-optimized product experience.",
+    workDone: ["Theme Customization", "Collection Page Setup", "Mobile Optimization", "Speed Tuning"],
+    featured: false,
+    img: ""
+  },
+  {
+    id: "daily-dhaga",
+    name: "Daily Dhaga",
+    url: "https://dailydhaga.com/",
+    domain: "dailydhaga.com",
+    category: "fashion",
+    platform: "Shopify",
+    market: "India",
+    technology: ["Shopify", "Liquid", "Custom Sections", "AJAX Cart"],
+    description: "Everyday Indian wear and handcrafted fabric store on Shopify with curated collection pages, product filters, and seamless cart experience.",
+    workDone: ["Theme Customization", "Product Page Development", "AJAX Cart Setup", "Responsive Layout"],
+    featured: false,
+    img: ""
   }
 ];
 
