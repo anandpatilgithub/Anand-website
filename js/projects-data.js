@@ -148,7 +148,7 @@ const projectsData = [
       "Mobile CRO"
     ],
     "featured": true,
-    "img": "./image/farm-web.jpeg",
+    "img": "",
     "caseStudy": {
       "title": "D2C Organic Farm Brand Scale & Conversion Optimization",
       "challenge": "Showcase farm-to-table authenticity with transparent sourcing details while maintaining mobile performance.",
