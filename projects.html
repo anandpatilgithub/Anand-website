@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All 91+ Client Projects | Anand Hyalij — Shopify & Front-End Developer</title>
+    <title>All 92+ Client Projects | Anand Hyalij — Shopify & Front-End Developer</title>
     
     <link rel="icon" type="image/x-icon" href="./image/Ah2.png" />
     <link rel="stylesheet" type="text/css" href="./style.css" />
@@ -38,7 +38,7 @@
     <div class="projects-hero-banner">
       <div class="container">
         <span class="section-badge"><i class="fa-solid fa-store"></i> Real-World eCommerce Showcase</span>
-        <h1 class="section-title">All <span class="text-gradient">91+ Client Projects</span></h1>
+        <h1 class="section-title">All <span class="text-gradient">92+ Client Projects</span></h1>
         <p class="section-subtitle" style="margin: 0 auto 24px;">Complete collection of live Shopify stores, E-Commerce platforms, and custom web applications developed or customized by Anand Hyalij.</p>
       </div>
     </div>
@@ -50,11 +50,11 @@
       <div class="portfolio-controls" style="margin-bottom: 48px;">
         <div class="search-input-wrapper" style="max-width: 600px;">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="fullSearch" class="portfolio-search-input" placeholder="Search 91+ projects by brand name, technology, or market..." onkeyup="filterFullProjects()" />
+          <input type="text" id="fullSearch" class="portfolio-search-input" placeholder="Search 92+ projects by brand name, technology, or market..." onkeyup="filterFullProjects()" />
         </div>
 
         <div class="filter-pills-flex" id="pillsContainer">
-          <button class="filter-pill active" onclick="setFullFilter('all', this)">All Projects (91)</button>
+          <button class="filter-pill active" id="fullAllCountPill" onclick="setFullFilter('all', this)">All Projects (92)</button>
           <button class="filter-pill" onclick="setFullFilter('fashion', this)">Fashion & Apparel</button>
           <button class="filter-pill" onclick="setFullFilter('jewellery', this)">Jewellery</button>
           <button class="filter-pill" onclick="setFullFilter('beauty', this)">Beauty & Skincare</button>
@@ -85,27 +85,24 @@
       let fullFilterCat = 'all';
 
       document.addEventListener('DOMContentLoaded', () => {
+        const pill = document.getElementById('fullAllCountPill');
+        if (pill) pill.textContent = `All Projects (${projectsData.length})`;
         renderFullProjects();
       });
 
-      function handleImgError(img, url, domain, name) {
-        const step = parseInt(img.dataset.step || "0");
-        if (step === 0) {
-          img.dataset.step = "1";
-          img.src = `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&embed=screenshot.url`;
-        } else if (step === 1) {
-          img.dataset.step = "2";
-          img.src = `https://image.thum.io/get/width/600/crop/400/${url}`;
-        } else {
-          const wrapper = img.closest('.project-img-wrapper');
-          wrapper.innerHTML = `
-            <div class="brand-fallback-view" style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(135deg,#1c1c2e,#151b29); padding:20px; text-align:center;">
-              <img src="https://www.google.com/s2/favicons?domain=${domain}&sz=128" style="width:44px; height:44px; border-radius:8px; margin-bottom:8px;" alt="${name} logo" onerror="this.style.display='none';" />
-              <div style="font-size:16px; font-weight:600; color:#fff;">${name}</div>
-              <div style="font-size:12px; color:var(--accent-blue); margin-top:4px;">${domain}</div>
+      function handleImgError(img, domain, name) {
+        const parent = img.parentElement;
+        if (!parent) return;
+        parent.innerHTML = `
+          <div class="brand-fallback-view" style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(135deg,#13141f,#090a10); padding:20px; text-align:center;">
+            <img src="https://www.google.com/s2/favicons?domain=${domain}&sz=128" style="width:44px; height:44px; border-radius:10px; margin-bottom:10px; box-shadow:0 4px 12px rgba(0,0,0,0.5);" alt="${name}" onerror="this.style.display='none';" />
+            <div style="font-size:16px; font-weight:600; color:#fff;">${name}</div>
+            <div style="font-size:13px; color:var(--accent-blue); margin-top:4px;">${domain}</div>
+            <div style="margin-top:10px; font-size:11px; color:var(--text-subtle); display:flex; align-items:center; justify-content:center; gap:6px;">
+              <i class="fa-brands fa-shopify" style="color:#95bf47;"></i> Shopify Live Store
             </div>
-          `;
-        }
+          </div>
+        `;
       }
 
       function renderFullProjects() {
@@ -128,37 +125,24 @@
         let html = '';
         filtered.forEach(p => {
           const techBadges = p.technology.map(t => `<span class="tech-tag-item">${t}</span>`).join('');
+          const imgSrc = p.img || `https://image.thum.io/get/width/600/crop/400/${p.url}`;
+          const escapedName = p.name.replace(/'/g, "\\'");
 
-          let imgContent = '';
-
-          if (p.img) {
-            imgContent = `
-              <div class="brand-fallback-view loading-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #09090b; z-index: 1;">
-                <i class="fa-brands fa-shopify pulse" style="font-size: 48px; color: #95bf47; margin-bottom: 16px;"></i>
-                <div style="font-size: 13px; color: var(--text-muted);">Loading Preview...</div>
-              </div>
-              <img 
-                src="${p.img}" 
-                alt="${p.name}" 
-                class="project-img" 
-                loading="lazy" 
-                style="position: relative; z-index: 2; opacity: 0; transition: opacity 0.4s ease;"
-                onload="this.style.opacity='1'; this.previousElementSibling.style.opacity='0'; setTimeout(() => this.previousElementSibling.style.display='none', 400);" 
-                onerror="handleImgError(this, '${p.url}', '${p.domain}', '${p.name.replace(/'/g, "\\'")}')"
-              />
-            `;
-          } else {
-            imgContent = `
-              <div class="brand-fallback-view" style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #09090b; padding: 20px; text-align: center;">
-                <i class="fa-brands fa-shopify" style="font-size: 48px; color: #95bf47; margin-bottom: 16px;"></i>
-                <div class="brand-fallback-name" style="font-size: 16px; font-weight: 600; color: #fff;">${p.name}</div>
-                <div class="brand-fallback-domain" style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">${p.domain}</div>
-                <div style="margin-top: 12px; font-size: 12px; color: var(--text-subtle); display: flex; align-items: center; justify-content: center; gap: 8px;">
-                  <i class="fa-solid fa-image"></i> Shopify Store Preview
-                </div>
-              </div>
-            `;
-          }
+          const imgContent = `
+            <div class="brand-fallback-view loading-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #09090b; z-index: 1;">
+              <i class="fa-brands fa-shopify pulse" style="font-size: 44px; color: #95bf47; margin-bottom: 12px;"></i>
+              <div style="font-size: 12px; color: var(--text-muted); font-weight: 500;">Loading Store Preview...</div>
+            </div>
+            <img 
+              src="${imgSrc}" 
+              alt="${p.name}" 
+              class="project-img" 
+              loading="lazy" 
+              style="position: relative; z-index: 2; opacity: 0; transition: opacity 0.4s ease; width: 100%; height: 100%; object-fit: cover; object-position: top center;"
+              onload="this.style.opacity='1'; if (this.previousElementSibling) { this.previousElementSibling.style.opacity='0'; setTimeout(() => this.previousElementSibling.style.display='none', 400); }" 
+              onerror="handleImgError(this, '${p.domain}', '${escapedName}')" 
+            />
+          `;
 
           html += `
             <div class="project-browser-card">
